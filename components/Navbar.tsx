@@ -1,69 +1,63 @@
 "use client";
-import { useState } from "react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import logo from "@/public/assets/logo.png";
 import Image from "next/image";
-import { AiOutlineClose } from "react-icons/ai";
+
+import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <nav className="bg-yellow-400 py-4 px-12 flex justify-between items-center">
+    <nav className="py-4 px-12 flex justify-between items-center w-full">
       <div className="flex items-center">
-        <Image alt="" src={logo} width={80} height={80} />
+        <Image alt="Logo Image" src={logo} width={100} height={100} />
       </div>
-      <div className="hidden md:flex items-center space-x-10 text-2xl font-bold">
-        <a href="#" className="text-white hover:text-gray-300">
+      <div className="hidden lg:flex items-center space-x-10 text-2xl font-bold">
+        <Link href="#" className="text-black">
           Home
-        </a>
-        <a href="#" className="text-white hover:text-gray-300">
+        </Link>
+        <Link href="#" className="text-black">
           About Us
-        </a>
-        <a href="#" className="text-white hover:text-gray-300">
+        </Link>
+        <Link href="#" className="text-black">
           Contact Us
-        </a>
-        <a href="#" className="text-white hover:text-gray-300">
+        </Link>
+        <Link href="#" className="text-black">
           Gallery
-        </a>
-        <a href="#" className="text-white hover:text-gray-300">
+        </Link>
+        <Link href="#" className="text-black">
           Services
-        </a>
+        </Link>
       </div>
-      <div className="flex md:hidden md:order-non">
-        <button className="2xl:hidden z-30" onClick={toggleMenu}>
-          {isMenuOpen ? (
-            <AiOutlineClose size="30px" color="#fff" />
-          ) : (
-            <RxHamburgerMenu size="30px" color="#fff" />
-          )}
-        </button>
-      </div>
-      {isMenuOpen && (
-        <div className="md:hidden bg-yellow-400">
-          <div className=" flex flex-col items-end justify-end  mx-auto px-4 py-2 font-bold text-xl">
-            <a href="#" className="block text-white py-2">
-              Home
-            </a>
-            <a href="#" className="block text-white py-2">
-              About Us
-            </a>
-            <a href="#" className="block text-white py-2">
-              Contact Us
-            </a>
-            <a href="#" className="block text-white py-2">
-              Gallery
-            </a>
-            <a href="#" className="block text-white py-2">
-              Services
-            </a>
+      <Sheet>
+        <SheetTrigger className="lg:hidden">
+          <RxHamburgerMenu size={25} />
+        </SheetTrigger>
+        <SheetContent>
+          <div className="flex flex-col gap-5 items-end justify-end  mx-auto px-4 py-5 font-bold text-xl">
+            <SheetClose>
+              <Link href="#">Home</Link>
+            </SheetClose>
+            <SheetClose>
+              <Link href="#">About Us</Link>
+            </SheetClose>
+            <SheetClose>
+              <Link href="#">Contact Us</Link>
+            </SheetClose>
+            <SheetClose>
+              <Link href="#">Gallery</Link>
+            </SheetClose>
+            <SheetClose>
+              <Link href="#">Services</Link>
+            </SheetClose>
           </div>
-        </div>
-      )}
+        </SheetContent>
+      </Sheet>
     </nav>
   );
 };

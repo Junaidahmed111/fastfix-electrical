@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 import hero from "@/public/assets/hero.jpg";
 import { Button } from "./ui/button";
+import Link from "next/link";
+import { FaArrowDownLong } from "react-icons/fa6";
 
 const Hero = () => {
   return (
@@ -14,8 +16,8 @@ const Hero = () => {
           height={1000}
           className="h-[300px] sm:h-[350px] md:h-[500px] lg:h-[700px] w-screen"
         />
-        <span className="absolute inset-0 flex items-center justify-center font-bold text-center text-white max-w-xl w-full mx-auto">
-          <span className="flex flex-col gap-y-3 text-xl sm:text-2xl md:text-4xl lg:text-6xl text-center">
+        <div className="absolute inset-0 flex items-center justify-center font-bold text-center text-white max-w-xl w-full mx-auto">
+          <div className="flex flex-col gap-y-3 md:gap-y-5 text-2xl md:text-4xl lg:text-6xl text-center">
             <span className="text-red-700">Fast Fix</span> Electrical and
             Automotive
             <span className="text-lg md:text-xl lg:text-2xl">
@@ -30,8 +32,14 @@ const Hero = () => {
                 Get a Qoute
               </Button>
             </div>
-          </span>
-        </span>
+            <Link
+              href="#whatWeDo"
+              className="w-10 h-10 md:w-16 md:h-16 text-xl md:text-3xl p-2 rounded-full border bg-white flex items-center justify-center my-3 mx-auto"
+            >
+              <FaArrowDownLong color="black" />
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );
